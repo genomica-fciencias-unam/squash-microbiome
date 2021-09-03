@@ -1,4 +1,3 @@
-
 # Metagenomic analysis by protein database and recruitemnts against reference genomes
 
 
@@ -289,7 +288,446 @@ plot_mcalabacita
 ```
 
 
+    
 ![png](output_11_0.png)
+    
+
+
+
+```R
+#Make wilcox-test comparisons for relative abundance at Level 1
+
+print("Carbohydrates")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Carbohydrates"))
+
+print("Clustering.based_subsystems")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Clustering.based_subsystems"))
+
+print("Amino_Acids_and_Derivatives")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Amino_Acids_and_Derivatives"))
+
+print("Membrane_Transport")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Membrane_Transport"))
+
+print("Miscellaneous")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Miscellaneous"), alternative="less")
+
+print("Cofactors_Vitamins_Prosthetic_Groups_Pigments")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Cofactors_Vitamins_Prosthetic_Groups_Pigments"))
+
+print("DNA_Metabolism")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "DNA_Metabolism"))
+
+print("RNA_Metabolism")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "RNA_Metabolism"))
+
+print("Cell_Wall_and_Capsule")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Cell_Wall_and_Capsule"))
+
+print("Respiration")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Respiration"))
+
+print("Virulence_Disease_and_Defense")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Virulence_Disease_and_Defense"))
+
+print("Fatty_Acids_Lipids_and_Isoprenoids")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Fatty_Acids_Lipids_and_Isoprenoids"))
+
+print("Nitrogen_Metabolism")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Nitrogen_Metabolism"))
+
+print("Nucleosides_and_Nucleotides")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Nucleosides_and_Nucleotides"))
+
+print("Motility_and_Chemotaxis")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Motility_and_Chemotaxis"))
+
+print("Motility_and_Chemotaxis")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Stress_Response"))
+
+print("Iron_acquisition_and_metabolism")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Iron_acquisition_and_metabolism"))
+
+print("Metabolism_of_Aromatic_Compounds")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Metabolism_of_Aromatic_Compounds"), alternative="less")
+
+print("Regulation_and_Cell_signaling")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Regulation_and_Cell_signaling"))
+
+print("Phosphorus_Metabolism")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Phosphorus_Metabolism"))
+
+print("Phages_Prophages_Transposable_elements_Plasmids")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Phages_Prophages_Transposable_elements_Plasmids"))
+
+print("Sulfur_Metabolism")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Sulfur_Metabolism"))
+
+print("Potassium_metabolism")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Potassium_metabolism"))
+
+print("Cell_Division_and_Cell_Cycle")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Cell_Division_and_Cell_Cycle"))
+
+print("Secondary_Metabolism")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Secondary_Metabolism"))
+
+print("Dormancy_and_Sporulation")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Dormancy_and_Sporulation"))
+
+print("Photosynthesis")
+wilcox.test(Relative_abundance~Climate, filter(mcalabacita, Level1 == "Photosynthesis"))
+```
+
+    [1] "Carbohydrates"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 6, p-value = 0.5333
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Clustering.based_subsystems"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 4, p-value = 1
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Amino_Acids_and_Derivatives"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 3, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Membrane_Transport"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 3, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Miscellaneous"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 8, p-value = 1
+    alternative hypothesis: true location shift is less than 0
+
+
+
+    [1] "Cofactors_Vitamins_Prosthetic_Groups_Pigments"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 5, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "DNA_Metabolism"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 7, p-value = 0.2667
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "RNA_Metabolism"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 6, p-value = 0.5333
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Cell_Wall_and_Capsule"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 5, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Respiration"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 3, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Virulence_Disease_and_Defense"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 3, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Fatty_Acids_Lipids_and_Isoprenoids"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 4, p-value = 1
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Nitrogen_Metabolism"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 4, p-value = 1
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Nucleosides_and_Nucleotides"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 5, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Motility_and_Chemotaxis"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 1, p-value = 0.2667
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Motility_and_Chemotaxis"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 3, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Iron_acquisition_and_metabolism"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 7, p-value = 0.2667
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Metabolism_of_Aromatic_Compounds"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 0, p-value = 0.06667
+    alternative hypothesis: true location shift is less than 0
+
+
+
+    [1] "Regulation_and_Cell_signaling"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 4, p-value = 1
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Phosphorus_Metabolism"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 6, p-value = 0.5333
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Phages_Prophages_Transposable_elements_Plasmids"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 7, p-value = 0.2667
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Sulfur_Metabolism"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 1, p-value = 0.2667
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Potassium_metabolism"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 2, p-value = 0.5333
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Cell_Division_and_Cell_Cycle"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 2, p-value = 0.5333
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Secondary_Metabolism"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 6, p-value = 0.5333
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Dormancy_and_Sporulation"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 5, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
+
+
+    [1] "Photosynthesis"
+
+
+
+    
+    	Wilcoxon rank sum test
+    
+    data:  Relative_abundance by Climate
+    W = 5, p-value = 0.8
+    alternative hypothesis: true location shift is not equal to 0
+
 
 
 
@@ -950,7 +1388,9 @@ write.csv(humid_prot, "humid_prot.csv")
 
 
 
-![png](output_14_3.png)
+    
+![png](output_15_3.png)
+    
 
 
 
@@ -1041,7 +1481,9 @@ arhudes
 
 
 
-![png](output_15_2.png)
+    
+![png](output_16_2.png)
+    
 
 
 # Analyses with KO (KEGG Orthology) database
@@ -1078,6 +1520,13 @@ kocalabacita4
 ```
 
 
+    phyloseq-class experiment-level object
+    otu_table()   OTU Table:         [ 4659 taxa and 6 samples ]
+    sample_data() Sample Data:       [ 6 samples by 38 sample variables ]
+    tax_table()   Taxonomy Table:    [ 4659 taxa by 2 taxonomic ranks ]
+
+
+
 ```R
 # Differetial abundance analyses
 #Arid vs perhumid
@@ -1109,6 +1558,66 @@ ggtitle("Humid vs arid ; a=0.05") +
 ggsave("karhudes.pdf", width = 40, height = 30, units = "cm")       
 karhudes
 ```
+
+    converting counts to integer mode
+    estimating size factors
+    estimating dispersions
+    gene-wise dispersion estimates
+    mean-dispersion relationship
+    final dispersion estimates
+    fitting model and testing
+
+
+
+    log2 fold change (MLE): climate humid vs arid 
+    Wald test p-value: climate humid vs arid 
+    DataFrame with 4659 rows and 6 columns
+                                             baseMean      log2FoldChange
+                                            <numeric>           <numeric>
+    8bcd9cdc656351ddc55976baf9aae448 39.3226143448607 -0.0372930328254575
+    b4c1a53a4f4fa04fcc570f815161d0df 62.3693469324419   0.339011447921243
+    07cf839b0dde29e101ae5daaff4d0342 88.0124012948467   0.191391134119737
+    4530f275ed29ef8608c658d29398caef 163.385754214323   0.260107116908634
+    c7da03ac9381d5a6587257107211394b 164.726587206819  -0.261021978222899
+    ...                                           ...                 ...
+    217d0cf08d73900025a1ba5ca4a41b97 2.63595750023842   -3.48805450368218
+    f390d0612db81b0266ffd280c4718ccc 261.773863217243   0.389384952081928
+    89b60805f85c42c1a0344bde9009fba2 7.39509027768967  -0.838853563864152
+    f85edf2d43316b401a5b992a69e29481 87.2608406102094    1.41502482174863
+    8958979e0bcdfe62823d5d3d7e76939f 1109.38595055057  0.0940492920269862
+                                                 lfcSE               stat
+                                             <numeric>          <numeric>
+    8bcd9cdc656351ddc55976baf9aae448 0.815867971350155 -0.045709641921281
+    b4c1a53a4f4fa04fcc570f815161d0df 0.689327668026334  0.491800146208975
+    07cf839b0dde29e101ae5daaff4d0342 0.682522938192186  0.280417145578549
+    4530f275ed29ef8608c658d29398caef 0.406948732342134  0.639164337511572
+    c7da03ac9381d5a6587257107211394b 0.513216483622374 -0.508600145460176
+    ...                                            ...                ...
+    217d0cf08d73900025a1ba5ca4a41b97  2.46973207653744  -1.41232101118128
+    f390d0612db81b0266ffd280c4718ccc 0.402389850440222  0.967680848947689
+    89b60805f85c42c1a0344bde9009fba2  1.48575220129136 -0.564598567065929
+    f85edf2d43316b401a5b992a69e29481 0.619305413245658   2.28485782859989
+    8958979e0bcdfe62823d5d3d7e76939f 0.305384330448451   0.30797026124057
+                                                 pvalue              padj
+                                              <numeric>         <numeric>
+    8bcd9cdc656351ddc55976baf9aae448  0.963541678701799  0.99801186327834
+    b4c1a53a4f4fa04fcc570f815161d0df  0.622860633166053  0.95263795516858
+    07cf839b0dde29e101ae5daaff4d0342  0.779157484250028 0.981429877296947
+    4530f275ed29ef8608c658d29398caef  0.522716029310207 0.935358318498594
+    c7da03ac9381d5a6587257107211394b  0.611032526989911  0.95263795516858
+    ...                                             ...               ...
+    217d0cf08d73900025a1ba5ca4a41b97  0.157855462493531                NA
+    f390d0612db81b0266ffd280c4718ccc  0.333203785457178  0.84918589029101
+    89b60805f85c42c1a0344bde9009fba2  0.572346840142745 0.946396009044766
+    f85edf2d43316b401a5b992a69e29481 0.0223211654980983 0.350023681740762
+    8958979e0bcdfe62823d5d3d7e76939f  0.758104961342851 0.976934275599654
+
+
+
+    
+![png](output_21_2.png)
+    
+
 
 
 ```R
@@ -1151,33 +1660,11 @@ write.table(humid_arid_core, "humid_arid_core.txt", row.names = FALSE, quote = F
 
 ```R
 #Load file with percetange of aligned sequences and taxonomy
-tab_aligned <- read.table("tax_genome_aligned", sep="\t")
-colnames(tab_aligned) <- c("Phylum", "Class", "Order", "Family", "Genus", "Specie", "Sample", "P_aligned")
+tab_aligned <- read.table("edited_genome_aligned", sep="\t")
+colnames(tab_aligned) <- c("Genus", "Specie", "Genome_name", "Sample", "P_aligned")
 
 #Estimate average of mapped sequences by specie
 tab_aligned$Ave <- ave(tab_aligned$P_aligned, tab_aligned$Specie, FUN=ave)
-
-```
-
-
-```R
-library(data.table)
-
-#Load the list of genus from corrplot
-r_genera <- c("Janthinobacterium", "Methylotenera", "Alcanivorax", "Steroidobacter", "Luteimonas", "Pseudoxanthomonas", "Methylibium", "Flavobacterium", "Chryseobacterium", "Novosphingobium", "Sphingopyxis", "Sphingobium", "Sphingomonas", "Thermovum", "Phenylobacterium", "Stenotrophomonas", "Pedobacter", "Flavisolibacter", "Gemmata", "Aeromicrobium", "Mycobacterium", "Arthrobacter", "Streptomyces", "Bdellovibrio", "Opitutus", "Planctomyces", "Agrobacterium", "Delftia", "Xenophilus", "Variovorax", "Polaromonas", "Limnohabitans", "Ramlibacter", "Acidovorax", "Dyadobacter", "Rhodoplanes", "Balneimonas", "Devosia", "Rhizobium", "Mycoplana", "Kaistia", "Ensifer", "Paucibacter", "Pseudomonas", "Caulobacter", "Arthrospira", "Luteolibacter", "Paenibacillus", "Bacillus", "Lysobacter", "Burkholderia", "Azoarcus", "Georgenia", "Arenimonas", "Azohydromonas", "Parasegitibacter", "Pontibacter", "Erythrobacter", "Methylobacterium", "Phaeospirillum", "Adhaeribacter", "Euzebya", "Geodermatophilus", "Bradyrhizobium", "Sinorhizobium", "Afifella", "Paracoccus", "Cellvibrio", "Ammoniphilus", "Glycomyces", "Pseudonocardia")
-
-f_tab_aligned <- subset(tab_aligned, Genus %in% r_genera)
-
-#Get list of species with the major average proportion of aligned genome
-most_a <- setkey(setDT(f_tab_aligned), Genus)[, .SD[which.max(Ave)], Genus]
-most_a <- as.vector(most_a$Specie)
-
-#Filter table to show just one specie for genus
-mf_tab_aligned <- subset(f_tab_aligned, Specie %in% most_a)
-mf_tab_aligned <- filter(mf_tab_aligned, Ave > 5)
-
-print("Percentage of sequences aligned")
-head(mf_tab_aligned)
 ```
 
 
@@ -1185,8 +1672,9 @@ head(mf_tab_aligned)
 #Subset to samples from core and LFC enriched by climatic source with possitive correlation with plant phenotype
 library(data.table)
 
-#Load the list of genus from corrplot
-r_genera <- c("Janthinobacterium", "Methylotenera", "Alcanivorax", "Steroidobacter", "Luteimonas", "Pseudoxanthomonas", "Methylibium", "Flavobacterium", "Chryseobacterium", "Novosphingobium", "Sphingopyxis", "Sphingobium", "Sphingomonas", "Thermovum", "Phenylobacterium", "Stenotrophomonas", "Pedobacter", "Flavisolibacter", "Gemmata", "Aeromicrobium", "Mycobacterium", "Arthrobacter", "Streptomyces", "Bdellovibrio", "Opitutus", "Planctomyces", "Agrobacterium", "Delftia", "Xenophilus", "Variovorax", "Polaromonas", "Limnohabitans", "Ramlibacter", "Acidovorax", "Dyadobacter", "Rhodoplanes", "Balneimonas", "Devosia", "Rhizobium", "Mycoplana", "Kaistia", "Ensifer", "Paucibacter", "Pseudomonas", "Caulobacter", "Arthrospira", "Luteolibacter", "Paenibacillus", "Bacillus", "Lysobacter", "Burkholderia", "Azoarcus", "Georgenia", "Arenimonas", "Azohydromonas", "Parasegitibacter", "Pontibacter", "Erythrobacter", "Methylobacterium", "Phaeospirillum", "Adhaeribacter", "Euzebya", "Geodermatophilus", "Bradyrhizobium", "Sinorhizobium", "Afifella", "Paracoccus", "Cellvibrio", "Ammoniphilus", "Glycomyces", "Pseudonocardia")
+#Load the list of genus from corrplot and those from all samples
+r_genera <- c("Rhizobium", "Methylotenera", "Luteimonas", "Pseudoxanthomonas", "Flavobacterium", "Chryseobacterium", "Novosphingobium", "Sphingobium", "Sphingomonas", "Phenylobacterium", "Stenotrophomonas", "Pedobacter", "Gemmata", "Aeromicrobium", "Mycobacterium", "Streptomyces", "Bdellovibrio", "Opitutus", "Delftia", "Variovorax", "Ramlibacter", "Acidovorax", "Dyadobacter", "Devosia", "Mycoplana", "Ensifer", "Pseudomonas", "Caulobacter", "Luteolibacter", "Paenibacillus", "Bacillus", "Lysobacter", "Burkholderia", "Arenimonas", "Pontibacter", "Methylobacterium", "Adhaeribacter", "Geodermatophilus", "Bradyrhizobium","Paracoccus", "Cellvibrio", "Ammoniphilus", "Glycomyces", "Pseudonocardia", "Rhodopseudomonas", "Kaistia", "Alsobacter", "Rhizorhapis", "Rhodopila", "Craurococcus", "Chitinophaga", "Solirubrobacter", "Sumerlaea", "Chthoniobacter", "Noviherbaspirillum", "Ohtaekwangia", "Corticibacterium", "Altererythrobacter", "Amaricoccus", "Sandaracinus", "Isoptericola", "Blastococcus", "Actinophytocola", "Virgisporangium", "Parviterribacter", "Luteimonas", "Roseisolibacter", "Methylotenera", "Ferrovibrio", "Nubsella", "Krasilnikovia")
+
 
 f_tab_aligned <- subset(tab_aligned, Genus %in% r_genera)
 
@@ -1200,25 +1688,126 @@ mf_tab_aligned <- subset(f_tab_aligned, Specie %in% most_a)
 #Filter by average alignment lower than 5%
 mf_tab_aligned <- filter(mf_tab_aligned, Ave > 5)
 
+
 print("Percentage of sequences aligned")
 head(mf_tab_aligned)
-
 ```
+
+    
+    Attaching package: ‘data.table’
+    
+    The following objects are masked from ‘package:reshape2’:
+    
+        dcast, melt
+    
+    The following objects are masked from ‘package:dplyr’:
+    
+        between, first, last
+    
+    The following object is masked from ‘package:purrr’:
+    
+        transpose
+    
+    The following object is masked from ‘package:SummarizedExperiment’:
+    
+        shift
+    
+    The following object is masked from ‘package:GenomicRanges’:
+    
+        shift
+    
+    The following object is masked from ‘package:IRanges’:
+    
+        shift
+    
+    The following objects are masked from ‘package:S4Vectors’:
+    
+        first, second
+    
+
+
+    [1] "Percentage of sequences aligned"
+
+
+
+<table>
+<thead><tr><th scope=col>Genus</th><th scope=col>Specie</th><th scope=col>Genome_name</th><th scope=col>Sample</th><th scope=col>P_aligned</th><th scope=col>Ave</th></tr></thead>
+<tbody>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>3_Fr                              </td><td>70.56                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>3_Lr                              </td><td>53.70                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>1_Fr                              </td><td>70.87                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>1_Lr                              </td><td> 6.80                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>5_Lr                              </td><td>14.12                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>5_Fr                              </td><td>46.47                             </td><td>43.75333                          </td></tr>
+</tbody>
+</table>
+
+
+
+
+```R
+#Subset to samples from core and LFC enriched by climatic source with possitive correlation with plant phenotype
+library(data.table)
+
+#Load the list of genus from corrplot and those from all samples
+r_genera <- c("Rhizobium", "Methylotenera", "Luteimonas", "Pseudoxanthomonas", "Flavobacterium", "Chryseobacterium", "Novosphingobium", "Sphingobium", "Sphingomonas", "Phenylobacterium", "Stenotrophomonas", "Pedobacter", "Gemmata", "Aeromicrobium", "Mycobacterium", "Streptomyces", "Bdellovibrio", "Opitutus", "Delftia", "Variovorax", "Ramlibacter", "Acidovorax", "Dyadobacter", "Devosia", "Mycoplana", "Ensifer", "Pseudomonas", "Caulobacter", "Luteolibacter", "Paenibacillus", "Bacillus", "Lysobacter", "Burkholderia", "Arenimonas", "Pontibacter", "Methylobacterium", "Adhaeribacter", "Geodermatophilus", "Bradyrhizobium","Paracoccus", "Cellvibrio", "Ammoniphilus", "Glycomyces", "Pseudonocardia", "Rhodopseudomonas", "Kaistia", "Alsobacter", "Rhizorhapis", "Rhodopila", "Craurococcus", "Chitinophaga", "Solirubrobacter", "Sumerlaea", "Chthoniobacter", "Noviherbaspirillum", "Ohtaekwangia", "Corticibacterium", "Altererythrobacter", "Amaricoccus", "Sandaracinus", "Isoptericola", "Blastococcus", "Actinophytocola", "Virgisporangium", "Parviterribacter", "Luteimonas", "Roseisolibacter", "Methylotenera", "Ferrovibrio", "Nubsella", "Krasilnikovia")
+
+
+f_tab_aligned <- subset(tab_aligned, Genus %in% r_genera)
+
+#Get list of species with the major average proportion of aligned genome
+most_a <- setkey(setDT(f_tab_aligned), Genus)[, .SD[which.max(Ave)], Genus]
+most_a <- as.vector(most_a$Specie)
+
+#Filter table to show just one specie for genus
+mf_tab_aligned <- subset(f_tab_aligned, Specie %in% most_a)
+
+#Filter by average alignment lower than 5%
+mf_tab_aligned <- filter(mf_tab_aligned, Ave > 5)
+
+
+print("Percentage of sequences aligned")
+head(mf_tab_aligned)
+```
+
+    [1] "Percentage of sequences aligned"
+
+
+
+<table>
+<thead><tr><th scope=col>Genus</th><th scope=col>Specie</th><th scope=col>Genome_name</th><th scope=col>Sample</th><th scope=col>P_aligned</th><th scope=col>Ave</th></tr></thead>
+<tbody>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>3_Fr                              </td><td>70.56                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>3_Lr                              </td><td>53.70                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>1_Fr                              </td><td>70.87                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>1_Lr                              </td><td> 6.80                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>5_Lr                              </td><td>14.12                             </td><td>43.75333                          </td></tr>
+	<tr><td>Acidovorax                        </td><td>Acidovorax_radicis                </td><td>Acidovorax_radicis_NZ_AFBG01000030</td><td>5_Fr                              </td><td>46.47                             </td><td>43.75333                          </td></tr>
+</tbody>
+</table>
+
+
 
 
 ```R
 print("Bubble plot of nucmer recruitments")
 samples <- factor(mf_tab_aligned$Sample, levels= c( "1_Lr", "1_Fr", "3_Lr", "3_Fr", "5_Lr", "5_Fr"))
-bc <- ggplot(mf_tab_aligned, aes(x = samples, y = reorder(Specie, Ave))) +
-            geom_point(aes(color = Phylum, size = P_aligned)) +
- scale_color_manual(values = c("Actinobacteria" = "#d26d7aff",
-                              "Bacteroidetes" = "#b6742aff", 
-                              "Proteobacteria" = "#419486ff")) +
-theme(axis.text.x = element_text(angle = 90)) + theme_light()
+bc <- ggplot(mf_tab_aligned, aes(x = samples, y = reorder(Specie, Ave), fill=P_aligned)) + 
+            geom_tile() +  scale_fill_gradient(low = "white", high = "black") +
+            theme(axis.text.x = element_text(angle = 90)) + theme_light()
 bc
 
 ggsave("bc.pdf", width = 7, height = 8)
 ```
+
+    [1] "Bubble plot of nucmer recruitments"
+
+
+
+    
+![png](output_27_1.png)
+    
+
 
 # Diverisity analysis of all predicted proteins
 This analyses includes all predicted proteins
