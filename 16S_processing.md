@@ -1,4 +1,3 @@
-
 # Amplicon sequence processing
 
 
@@ -40,12 +39,6 @@ done
 
 ```R
 Preceding script utilices “fastx_trimmer” that crop sequence to a size that is defined with -l. The obtained file is assembled with “pandaseq”, -t can take values for 0 to 1 and alignments with lower values are discarded; -l is the minimum sequence length -L maximum sequence length; -o minimum overlap between assembled sequences.
-```
-
-
-```R
-Running works in the cluster:
-$ for N in `ls *.scr`; do qsub $N; done
 ```
 
 
@@ -180,8 +173,8 @@ $ grep -i "no blast hit" taxonomy/biof_tax_assignments.txt  >> to_remove_from_bi
 
 ```R
 Make OTU table with the number of times that every OTU appears in the samples, -i indicates the OTU file, -t taxonomic assignments, -e OTUs to be removed.
-$ make_otu_table.py -i acalabacita.otu -t taxonomy/acalabacita.rep_tax_assignments
-.txt -e to_remove_from_biom -o acalabacita.biom
+$ make_otu_table.py -i acalabacita.otu -t taxonomy/acalabacita.rep_tax_assignments.txt -e to_remove_from_biom 
+-o acalabacita.biom
 ```
 
 
@@ -199,7 +192,7 @@ $ biom convert --to-tsv -i nscalabacita.biom -o nscalabacita.txt --table-type "T
 
 ```R
 Split taxonomy table from OTU table.
-$ perl -pe 's/\; /\;/g' nscalabacita.txt | awk '{print $1,"\t",$NF}' | perl -pe 's/\;/\t/g' > squash.tax
+$ perl -pe 's/\; /\;/g' nscalabacita.txt | awk '{print $1,"\t",$NF}' | perl -pe 's/\;/\t/g' > Silva_taxonomy.tsv
 ```
 
 
@@ -216,12 +209,61 @@ $ filter_fasta.py -f acalabacita.rep.fna -b nscalabacita.biom -o nscalabacita.re
 
 
 ```R
+Update taxonomy table with Silva data base
+$ R
+> calabaza <- readDNAStringSet("calabacita_repset2020.fna") 
+> seqs <- getSequences(calabaza)  
+
+> taxa <- assignTaxonomy(seqs, "silva_nr99_v138_train_set.fa.gz", multithread=40); save.image()
+> asv_seqs <- colnames(calabaza)
+> asv_headers <- names(calabaza)
+
+
+> asv_tax <- taxa
+> row.names(asv_tax) <- sub(">", "", asv_headers)
+> write.table(asv_tax, "ASVs_taxonomy.tsv", sep="\t", quote=F, col.names=NA)
+> savehistory()
+> q()
+```
+
+
+```R
+Remove chimeras
+$ identify_chimeric_seqs.py -i nscalabacita.rep_aligned.fasta -t 97_otu_taxonomy.txt -r 97_otus.fasta 
+-o cblast.txt -m blast_fragments
+
+Make list of non-chimeric sequences
+$ awk '{print $1}' cblast.txt > chim_list
+
+$ cut -f1  Silva_taxonomy.tsv > all_otus
+
+$ cat all_otus chim_list | sort | uniq -c | grep -w '1' | awk '{print$2}' > no_chim_list
+
+$ R
+> silva <- read.table("Silva_taxonomy.tsv", header=T, sep="\t", row.names=1)
+> no_chim <- read.table("no_chim_list", row.names=1)
+> nc_silva <- merge(no_chim, silva, by=0)
+> write.table(nc_silva, "nc_silva_taxonomy.tsv", sep="\t", row.names = FALSE, quote = FALSE)
+> q()
+
+$ sed -i 's/NA/unclassified/g' nc_silva_taxonomy.tsv
+
+$ sed -i 's/ /_/g' nc_silva_taxonomy.tsv 
+```
+
+
+```R
+Remove chimeras from filtered sequences
+$ seqtk subseq nscalabacita.rep.fna no_chim_list > nc_nscalabacita.rep.fna
+
 Alignment of filtered sequences
-$ parallel_align_seqs_pynast.py -i nscalabacita.rep.fna  -o calabacita.align
+
+$ parallel_align_seqs_pynast.py -i nc_nscalabacita.rep.fna  -o nc_calabacita.align
 ```
 
 
 ```R
 Phylogenetic tree of aligned representative sequences, -nt indicates nucleotide sequences, -gtr substitution model GTR.
-$ fasttree -nt -gtr calabacita.align/nscalabacita.rep_aligned.fasta > squash.tree
+
+$ fasttree -nt -gtr nc_calabacita.align/nc_nscalabacita.rep_aligned.fasta > nc_squash.tree
 ```
